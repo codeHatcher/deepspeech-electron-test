@@ -11,21 +11,24 @@ npm install
 npm run rebuild
 ```
 
-Download and extract audio files to `/public` directory
+If you get an error such as
 
 ```
-wget https://github.com/mozilla/DeepSpeech/releases/download/v0.7.0/audio-0.7.0.tar.gz
-tar xfvz audio-0.7.0.tar.gz -C ./public/
-```
+App threw an error during load
+[1] Error: Cannot find module '/Users/av/Code/DeepSpeech-examples/deepspeech-electron/node_modules/deepspeech/lib/binding/v0.7.4/darwin-x64/electron-v9.1/deepspeech.node'
+[1] Require stack:
+[1] - /Users/av/Code/DeepSpeech-examples/deepspeech-electron/node_modules/deepspeech/index.js
+[1] - /Users/av/Code/DeepSpeech-examples/deepspeech-electron/public/recognize-wav.js
+[1] - /Users/av/Code/DeepSpeech-examples/deepspeech-electron/public/create-window.js
+[1] - /Users/av/Code/DeepSpeech-examples/deepspeech-electron/public/electron.js
+[1] - /Users/av/Code/DeepSpeech-examples/deepspeech-electron/node_modules/electron/dist/Electron.app/Contents/Resources/default_app.asar/main.js
 
-(Optional) Download or softlink DeepSpeech 0.7.4 model files to the root of the project:
-
 ```
-wget https://github.com/mozilla/DeepSpeech/releases/download/v0.7.4/deepspeech-0.7.4-models.pbmm
-wget https://github.com/mozilla/DeepSpeech/releases/download/v0.7.4/deepspeech-0.7.4-models.scorer
-```
+then check the target in `"rebuild": "npm rebuild --runtime=electron --target=9.0.5 --disturl=https://atom.io/download/atom-shell --abi=75",` matches the electron version
 
-If the files do not exist, they will be downloaded.
+test audio files are already in `/public` directory
+
+deep speech model files are already in root of project
 
 ## Run
 
@@ -41,6 +44,8 @@ Run development version (Windows):
 export BROWSER=none
 npm run dev-win
 ```
+
+I haven't tested much of the below, may not be working
 
 ## Package
 
