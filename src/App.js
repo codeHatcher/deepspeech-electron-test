@@ -26,6 +26,7 @@ class App extends Component {
 					window.ipcRenderer.invoke('recognize-wav', file).then(result => {
 						// add the recognition results to this.state.results
 						console.log('result', result);
+						debugger;
 						const results = {...this.state.results};
 						results[file] = result;
 						this.setState({results});

@@ -44,6 +44,7 @@ function recognizeWav(path, model) {
 					reject(new Error('invalid sample rate: '+format.sampleRate));
 				}
 				reader.on('end', function () {
+					// const results = modelStream.finishStreamWithMetadata(2);
 					const results = modelStream.finishStream();
 					resolve(results);
 				});
